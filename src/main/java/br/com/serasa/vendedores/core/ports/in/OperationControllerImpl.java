@@ -2,14 +2,12 @@ package br.com.serasa.vendedores.core.ports.in;
 
 import br.com.serasa.vendedores.core.model.OperationModel;
 import br.com.serasa.vendedores.core.ports.in.transferobject.OperationTO;
-import br.com.serasa.vendedores.core.ports.in.transferobject.VendorTO;
 import br.com.serasa.vendedores.core.usecase.OperationUseCase;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,8 +35,4 @@ public class OperationControllerImpl implements OperationController {
         return ResponseEntity.status(HttpStatus.CREATED).body(operationTOReturn);
     }
 
-    @Override
-    public ResponseEntity<OperationTO> find(Integer id) {
-        return null;
-    }
 }

@@ -25,7 +25,7 @@ public class VendorEntity {
     private String phone;
 
     @Column(name = "age")
-    private String age;
+    private Integer age;
 
     @Column(name = "city")
     private String city;

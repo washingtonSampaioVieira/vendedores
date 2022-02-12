@@ -22,7 +22,7 @@ public class VendorTO {
     @JsonProperty("telefone")
     private String phone;
     @JsonProperty("idade")
-    private String age;
+    private Integer age;
     @JsonProperty("cidade")
     private String city;
     @JsonProperty("estado")

@@ -12,6 +12,7 @@ Desafio Serasa Experian – Nível 2
 * JPA / Hibernate
 * Maven
 * Banco de Dados H2
+* JUnit + Mockito
 
 # Autor
 

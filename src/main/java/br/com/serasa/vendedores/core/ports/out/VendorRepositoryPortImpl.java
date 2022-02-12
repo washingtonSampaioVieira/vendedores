@@ -6,10 +6,10 @@ import br.com.serasa.vendedores.infra.persistence.entity.VendorEntity;
 import br.com.serasa.vendedores.infra.persistence.repositories.crud.VendorRepository;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,6 +42,9 @@ public class VendorRepositoryPortImpl implements VendorRepositoryPort {
 
     @Override
     public List<VendorTO> findAll() {
-        return null;
+    log.info("Ralizando busca de todos os vendedores");
+        List<VendorEntity> vendorEntity = vendorRepository.findAll();
+        List<VendorTO> vendorTOList = modelMapper.map(vendorEntity, new TypeToken<List<VendorTO>>() {}.getType());
+        return vendorTOList;
     }
 }

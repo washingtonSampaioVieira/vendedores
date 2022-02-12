@@ -13,7 +13,7 @@ public class VendorModel {
     private Integer id;
     private String name;
     private String phone;
-    private String age;
+    private Integer age;
     private String city;
     private String state;
     private String region;

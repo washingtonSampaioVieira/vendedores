@@ -1,8 +1,12 @@
 package br.com.serasa.vendedores.infra.persistence.entity;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 
 @Getter
 @Setter
@@ -21,6 +25,6 @@ public class OperationEntity {
     private String region;
 
     @Column(name = "states")
-    private String[] states;
+    private ArrayList<String> states;
 
 }
