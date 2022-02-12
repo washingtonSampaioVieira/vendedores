@@ -6,7 +6,7 @@ Desafio Serasa Experian – Nível 2
 
 ## Backend
 
-* Hexagonal architecture
+* Clean Architecture
 * Java 11
 * Spring Boot
 * JPA / Hibernate
