@@ -1,6 +1,7 @@
 package br.com.serasa.vendedores.core.ports.out;
 
 import br.com.serasa.vendedores.core.ports.out.transferobject.VendorTO;
+import br.com.serasa.vendedores.core.usecase.exception.NoFoundRegistry;
 import br.com.serasa.vendedores.infra.persistence.entity.VendorEntity;
 import br.com.serasa.vendedores.infra.persistence.repositories.crud.VendorRepository;
 import lombok.extern.log4j.Log4j2;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Log4j2
 @Component
@@ -29,9 +31,13 @@ public class VendorRepositoryPortImpl implements VendorRepositoryPort {
     }
 
     @Override
-    public VendorTO findOne(Integer id) {
+    public VendorTO findOne(Integer id) throws NoFoundRegistry {
         log.info("Ralizando busca de um vendedor, id: " + id);
-        return modelMapper.map(vendorRepository.findAllById(Collections.singleton(id)), VendorTO.class );
+        Optional<VendorEntity> vendorEntity = vendorRepository.findById(id);
+        if(vendorEntity.isPresent()){
+            return modelMapper.map(vendorEntity.get(), VendorTO.class );
+        }
+        throw new NoFoundRegistry();
     }
 
     @Override

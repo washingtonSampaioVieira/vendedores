@@ -1,9 +1,11 @@
 package br.com.serasa.vendedores.core.ports.in;
 
+import br.com.serasa.vendedores.core.model.VendorFullModel;
 import br.com.serasa.vendedores.core.model.VendorModel;
+import br.com.serasa.vendedores.core.ports.in.transferobject.VendorResumeListOneTO;
 import br.com.serasa.vendedores.core.ports.in.transferobject.VendorTO;
 import br.com.serasa.vendedores.core.usecase.VendorUseCase;
-import lombok.Getter;
+import br.com.serasa.vendedores.core.usecase.exception.NoFoundRegistry;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +41,16 @@ public class VendorControllerImpl implements VendorController {
 
     @Override
     @GetMapping(value = "/{id}")
-    public ResponseEntity<VendorTO> find(Integer id) {
-        return null;
+    public ResponseEntity<VendorResumeListOneTO> find(@PathVariable Integer id) {
+        VendorFullModel vendorFullModel = null;
+        try {
+            vendorFullModel = vendorUseCase.findOne(id);
+        } catch (NoFoundRegistry noFoundRegistry) {
+            return ResponseEntity.noContent().build();
+        }
+
+        VendorResumeListOneTO vendorReturn = modelMapper.map(vendorFullModel, VendorResumeListOneTO.class);
+
+        return ResponseEntity.ok(vendorReturn);
     }
 }

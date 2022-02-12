@@ -3,7 +3,6 @@ package br.com.serasa.vendedores.infra.persistence.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Getter
 @Setter
@@ -11,7 +10,6 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "tb_operation")
-@Builder
 public class OperationEntity {
 
     @Id
